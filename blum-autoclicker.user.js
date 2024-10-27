@@ -26,7 +26,6 @@ let GAME_SETTINGS_ORIGINAL = Object.assign({}, GAME_SETTINGS);
 let isGamePaused = false;
 
 try {
-	GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
 	
 	let gameStats = {
 		score: 0,
@@ -36,13 +35,6 @@ try {
 		flowersSkipped: 0,
 		isGameOver: false,
 	};
-	
-	console.log('-------------------------------------------------------------')
-	let noisePercent = Math.floor( Math.random() * 6) + 2;
-	let noiseFlowerSkip = GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100);
-	GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
-	console.log(GAME_SETTINGS)
-	console.log('-------------------------------------------------------------')
 
 	const originalArrayPush = Array.prototype.push;
 	Array.prototype.push = function(...items) {
@@ -56,6 +48,11 @@ try {
 		const {
 			assetType
 		} = item.asset;
+
+				console.log('-------------------------------------------------------------')
+				console.log(GAME_SETTINGS)
+				console.log('-------------------------------------------------------------')
+		
 		switch (assetType) {
 			case "CLOVER":
 				processFlower(item);
@@ -163,6 +160,12 @@ try {
 
 		playButtons.forEach(button => {
 			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && (/Play/.test(button.textContent) || /Continue/.test(button.textContent))) {
+
+				GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
+				let noisePercent = Math.floor( Math.random() * 6) + 2;
+				let noiseFlowerSkip = GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100);
+				GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
+				
 				setTimeout(() => {
 					button.click();
 					gameStats.isGameOver = false;

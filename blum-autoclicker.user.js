@@ -14,7 +14,7 @@
 let GAME_SETTINGS = {
 	minBombHits: Math.floor(Math.random() * 2),
 	minIceHits: Math.floor(Math.random() * 2) + 1,
-	flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
+	flowerSkipPercentage: Math.floor(Math.random() * 11) + 14,
 	minDelayMs: 500,
 	maxDelayMs: 999,
 	autoClickPlay: false,
@@ -36,12 +36,13 @@ try {
 		flowersSkipped: 0,
 		isGameOver: false,
 	};
-
-	let noisePercent = 2 + Math.random() * 6;
+	
+	console.log('-------------------------------------------------------------')
+	let noisePercent = Math.floor( Math.random() * 6) + 2;
 	let noiseFlowerSkip = GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100);
 	GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
-
 	console.log(GAME_SETTINGS)
+	console.log('-------------------------------------------------------------')
 
 	const originalArrayPush = Array.prototype.push;
 	Array.prototype.push = function(...items) {

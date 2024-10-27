@@ -134,7 +134,7 @@ try {
 
 	function checkGameCompletion() {
 		console.log('-----checkGameCompletion-------')
-		const rewardElement = document.querySelector('#app > div > div > div.content > div.reward');
+		const rewardElement = document.querySelector('#app > div > div > div.content div.reward');
 		if (rewardElement && !gameStats.isGameOver) {
 			gameStats.isGameOver = true;
 			resetGameStats();

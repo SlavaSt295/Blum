@@ -163,7 +163,7 @@ try {
 
 	function resetGameStats() {
 		GAME_SETTINGS = generateGameSettings();
-		console.log('-----NGS-----' + GAME_SETTINGS)
+		console.log('-----NGS-----', GAME_SETTINGS)
 		gameStats = {
 			score: 0,
 			bombHits: 0,

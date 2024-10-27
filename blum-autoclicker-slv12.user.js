@@ -180,7 +180,7 @@ try {
 	}
 
 	const observer = new MutationObserver(mutations => {
-		console.log('mutation')
+		console.log('---------------------------MutationObserver')
 		for (const mutation of mutations) {
 			if (mutation.type === 'childList') {
 				console.log('-----MutationObserver-------')
@@ -193,11 +193,12 @@ try {
 	window.addEventListener('load', () => {
 		setTimeout(() => {
 		    appElement = document.querySelector('#app');
-		    console.log(appElement); // Попробуем получить элемент через 1 секунду
+		    console.log(appElement);
 		}, 1500);
 	});
 	
 	if (appElement) {
+	    console.log('-------------------------------observer start');
 		observer.observe(appElement, {
 			childList: true,
 			subtree: true

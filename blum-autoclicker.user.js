@@ -133,6 +133,9 @@ try {
 	function checkGameCompletion() {
 		const rewardElement = document.querySelector('#app > div > div > div.content > div.reward');
 		if (rewardElement && !gameStats.isGameOver) {
+
+			console.log('-------------------------GameOver-----------------------------')
+			
 			gameStats.isGameOver = true;
 			resetGameStats();
 		}
@@ -149,7 +152,7 @@ try {
 		};
 
 		
-		console.log('-------------------------------------------------------------')
+		console.log('----------------------resetGameStats-------------------------------')
 		// GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
 		// let noisePercent = Math.floor(Math.random() * 15) + 14;
 		// let noiseFlowerSkip = Math.floor(GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100));

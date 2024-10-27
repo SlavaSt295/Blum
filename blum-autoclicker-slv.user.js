@@ -21,6 +21,8 @@ let GAME_SETTINGS = {
 	dogsProbability: (98 + Math.random()) / 100
 };
 
+console.log('---1----')
+console.log(GAME_SETTINGS)
 
 let isGamePaused = false;
 

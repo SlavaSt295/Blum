@@ -127,13 +127,21 @@ try {
 		const maxDelay = GAME_SETTINGS.maxDelayMs || 1000;
 		return Math.random() * (maxDelay - minDelay) + minDelay;
 	}
-
+	
+	let isChecking = false;
 	function checkGameCompletion() {
-		const rewardElement = document.querySelector('#app > div > div > div.content div.reward');
-		if (rewardElement && !gameStats.isGameOver) {
-			gameStats.isGameOver = true;
-			resetGameStats();
-		}
+	    const rewardElement = document.querySelector('#app > div > div > div.content div.reward');
+	    
+	    if (rewardElement && !gameStats.isGameOver) {
+	        gameStats.isGameOver = true;
+	        resetGameStats();
+		    
+	        isChecking = true;
+	
+	        setTimeout(() => {
+	            isChecking = false; 
+	        }, 3000);
+	    }
 	}
 
 	function resetGameStats() {
@@ -173,11 +181,13 @@ try {
 	}
 
 	const observer = new MutationObserver(mutations => {
-		for (const mutation of mutations) {
-			if (mutation.type === 'childList') {
-				checkGameCompletion();
-			}
+	    for (const mutation of mutations) {
+		if (mutation.type === 'childList') {
+		    if (!isChecking) {
+			checkGameCompletion();
+		    }
 		}
+	    }
 	});
 
 	let appElement = document.querySelector('#app');

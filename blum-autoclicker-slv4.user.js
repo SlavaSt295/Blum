@@ -133,6 +133,7 @@ try {
 	}
 
 	function checkGameCompletion() {
+		console.log('-----checkGameCompletion-------')
 		const rewardElement = document.querySelector('#app > div > div > div.content > div.reward');
 		if (rewardElement && !gameStats.isGameOver) {
 			gameStats.isGameOver = true;
@@ -141,6 +142,7 @@ try {
 	}
 
 	function resetGameStats() {
+		console.log('-----resetGameStats-------')
 		GAME_SETTINGS.flowerSkipPercentage = Math.floor(Math.random() * 11) + 15;
 		gameStats = {
 			score: 0,
@@ -178,6 +180,7 @@ try {
 	const observer = new MutationObserver(mutations => {
 		for (const mutation of mutations) {
 			if (mutation.type === 'childList') {
+				console.log('-----MutationObserver-------')
 				checkGameCompletion();
 			}
 		}

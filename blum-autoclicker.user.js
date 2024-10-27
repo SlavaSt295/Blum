@@ -13,7 +13,7 @@
 
 let GAME_SETTINGS = {
 	minBombHits: Math.floor(Math.random() * 2),
-	minIceHits: Math.floor(Math.random() * 2) + 2,
+	minIceHits: Math.floor(Math.random() * 2) + 1,
 	flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
 	minDelayMs: 500,
 	maxDelayMs: 999,
@@ -21,10 +21,13 @@ let GAME_SETTINGS = {
 	dogsProbability: (98 + Math.random()) / 100
 };
 
+let GAME_SETTINGS_ORIGINAL = Object.assign({}, GAME_SETTINGS);
 
 let isGamePaused = false;
 
 try {
+	GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
+	
 	let gameStats = {
 		score: 0,
 		bombHits: 0,
@@ -33,6 +36,12 @@ try {
 		flowersSkipped: 0,
 		isGameOver: false,
 	};
+
+	let noisePercent = 2 + Math.random() * 6;
+	let noiseFlowerSkip = GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100);
+	GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
+
+	console.log(GAME_SETTINGS)
 
 	const originalArrayPush = Array.prototype.push;
 	Array.prototype.push = function(...items) {

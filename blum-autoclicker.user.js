@@ -48,10 +48,6 @@ try {
 		const {
 			assetType
 		} = item.asset;
-
-				console.log('-------------------------------------------------------------')
-				console.log(GAME_SETTINGS)
-				console.log('-------------------------------------------------------------')
 		
 		switch (assetType) {
 			case "CLOVER":
@@ -161,11 +157,14 @@ try {
 		playButtons.forEach(button => {
 			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && (/Play/.test(button.textContent) || /Continue/.test(button.textContent))) {
 
+				console.log('-------------------------------------------------------------')
 				GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
-				let noisePercent = Math.floor( Math.random() * 6) + 2;
-				let noiseFlowerSkip = GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100);
+				let noisePercent = Math.floor(Math.random() * 20) + 8;
+				let noiseFlowerSkip = Math.floor(GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100));
 				GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
-				
+				console.log(GAME_SETTINGS)
+				console.log('-------------------------------------------------------------')
+		
 				setTimeout(() => {
 					button.click();
 					gameStats.isGameOver = false;

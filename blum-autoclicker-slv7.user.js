@@ -188,6 +188,9 @@ try {
 	});
 
 	const appElement = document.querySelector('#app');
+	window.addEventListener('load', () => {
+	    const appElement = document.querySelector('#app');
+	});
 	console.log('-----appElement-------')
 	console.log(appElement)
 	if (appElement) {

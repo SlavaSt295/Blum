@@ -200,7 +200,7 @@ try {
 			    subtree: true
 			});
 		    }
-		}, 1500);
+		}, 4500);
 	});
 
 	continuousPlayButtonCheck();

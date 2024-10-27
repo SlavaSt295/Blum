@@ -187,16 +187,14 @@ try {
 		}
 	});
 
-		console.log('---b1---')
-		console.log(document.querySelector('body'))
 	let appElement = document.querySelector('#app');
 	window.addEventListener('load', () => {
-	    appElement = document.querySelector('#app');
-		console.log('---b2---')
-		console.log(document.querySelector('body'))
+		setTimeout(() => {
+		    appElement = document.querySelector('#app');
+		    console.log(appElement); // Попробуем получить элемент через 1 секунду
+		}, 1500);
 	});
-	console.log('-----appElement-------')
-	console.log(appElement)
+	
 	if (appElement) {
 		observer.observe(appElement, {
 			childList: true,

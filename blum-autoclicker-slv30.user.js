@@ -11,15 +11,32 @@
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
-let GAME_SETTINGS = {
-	minBombHits: Math.floor(Math.random() * 2),
-	minIceHits: Math.floor(Math.random() * 2) + 2,
-	flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
-	minDelayMs: 500,
-	maxDelayMs: 999,
-	autoClickPlay: false,
-	dogsProbability: (98 + Math.random()) / 100
-};
+const generateGameSettings = () => {
+	let minIceHits;
+	
+	const randomValueForIce = Math.random();
+	
+	if (randomValueForIce < 0.1) {
+	    minIceHits = 2;
+	} else if (randomValueForIce < 0.6) {
+	    minIceHits = 1;
+	} else {
+	    minIceHits = 0;
+	}
+	
+	return {
+		minBombHits: Math.random() < 0.3 ? 1 : 0,
+		minIceHits: minIceHits,
+		flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
+		minDelayMs: 500,
+		maxDelayMs: 999,
+		autoClickPlay: false,
+		dogsProbability: (98 + Math.random()) / 100
+	}
+}
+
+
+let GAME_SETTINGS = generateGameSettings();
 
 let isGamePaused = false;
 
@@ -145,8 +162,8 @@ try {
 	}
 
 	function resetGameStats() {
-		GAME_SETTINGS.flowerSkipPercentage = Math.floor(Math.random() * 11) + 15;
-		console.log('-----FSP-----' + GAME_SETTINGS.flowerSkipPercentage)
+		GAME_SETTINGS = generateGameSettings();
+		console.log('-----NGS-----' + GAME_SETTINGS)
 		gameStats = {
 			score: 0,
 			bombHits: 0,

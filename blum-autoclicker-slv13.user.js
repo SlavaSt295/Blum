@@ -190,20 +190,21 @@ try {
 	});
 
 	let appElement = document.querySelector('#app');
-	window.addEventListener('load', () => {
+		window.addEventListener('load', () => {
 		setTimeout(() => {
 		    appElement = document.querySelector('#app');
 		    console.log(appElement);
+		
+		
+		    if (appElement) {
+			console.log('-------------------------------observer start');
+			observer.observe(appElement, {
+			    childList: true,
+			    subtree: true
+			});
+		    }
 		}, 1500);
 	});
-	
-	if (appElement) {
-	    console.log('-------------------------------observer start');
-		observer.observe(appElement, {
-			childList: true,
-			subtree: true
-		});
-	}
 
 	continuousPlayButtonCheck();
 

@@ -178,6 +178,7 @@ try {
 	}
 
 	const observer = new MutationObserver(mutations => {
+		console.log('mutation')
 		for (const mutation of mutations) {
 			if (mutation.type === 'childList') {
 				console.log('-----MutationObserver-------')
@@ -187,6 +188,8 @@ try {
 	});
 
 	const appElement = document.querySelector('#app');
+	console.log('-----appElement-------')
+	console.log(appElement)
 	if (appElement) {
 		observer.observe(appElement, {
 			childList: true,

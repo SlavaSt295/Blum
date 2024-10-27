@@ -48,7 +48,7 @@ try {
 
 
 		console.log('---handleGameElement----')
-		console.log(GAME_SETTINGS)
+		console.log(gameStats)
 		
 		const {
 			assetType

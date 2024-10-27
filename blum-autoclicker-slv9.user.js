@@ -187,9 +187,13 @@ try {
 		}
 	});
 
+		console.log('---b1---')
+		console.log(document.querySelector('body'))
 	let appElement = document.querySelector('#app');
 	window.addEventListener('load', () => {
 	    appElement = document.querySelector('#app');
+		console.log('---b2---')
+		console.log(document.querySelector('body'))
 	});
 	console.log('-----appElement-------')
 	console.log(appElement)

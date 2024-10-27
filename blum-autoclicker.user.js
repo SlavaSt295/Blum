@@ -21,6 +21,15 @@ let GAME_SETTINGS = {
 	dogsProbability: (98 + Math.random()) / 100
 };
 
+console.log('-------------------------------------------------------------')
+// GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
+// let noisePercent = Math.floor(Math.random() * 15) + 14;
+// let noiseFlowerSkip = Math.floor(GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100));
+// GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
+console.log(GAME_SETTINGS)
+console.log('-------------------------------------------------------------')
+
+
 let GAME_SETTINGS_ORIGINAL = Object.assign({}, GAME_SETTINGS);
 
 let isGamePaused = false;
@@ -157,13 +166,7 @@ try {
 		playButtons.forEach(button => {
 			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && (/Play/.test(button.textContent) || /Continue/.test(button.textContent))) {
 
-				console.log('-------------------------------------------------------------')
-				GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
-				let noisePercent = Math.floor(Math.random() * 15) + 14;
-				let noiseFlowerSkip = Math.floor(GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100));
-				GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
-				console.log(GAME_SETTINGS)
-				console.log('-------------------------------------------------------------')
+
 		
 				setTimeout(() => {
 					button.click();

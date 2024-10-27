@@ -43,8 +43,8 @@ try {
 		if (!item || !item.asset) return;
 
 		// console.log('---handleGameElement----')
-		console.log(GAME_SETTINGS)
-		console.log(gameStats)
+		// console.log(GAME_SETTINGS)
+		// console.log(gameStats)
 		
 		const {
 			assetType
@@ -146,7 +146,7 @@ try {
 
 	function resetGameStats() {
 		GAME_SETTINGS.flowerSkipPercentage = Math.floor(Math.random() * 11) + 15;
-		console.log('-----flowerSkipPercentage-------' + GAME_SETTINGS.flowerSkipPercentage)
+		console.log('-----FSP-----' + GAME_SETTINGS.flowerSkipPercentage)
 		gameStats = {
 			score: 0,
 			bombHits: 0,

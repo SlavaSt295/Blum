@@ -159,7 +159,7 @@ try {
 
 				console.log('-------------------------------------------------------------')
 				GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
-				let noisePercent = Math.floor(Math.random() * 20) + 8;
+				let noisePercent = Math.floor(Math.random() * 15) + 14;
 				let noiseFlowerSkip = Math.floor(GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100));
 				GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
 				console.log(GAME_SETTINGS)

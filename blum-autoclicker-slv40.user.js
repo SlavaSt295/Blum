@@ -36,6 +36,11 @@ const generateGameSettings = () => {
 }
 
 
+const menuSettingsInfo = document.createElement('textarea');
+menuSettingsInfo.className = 'settings-ngs';
+menuSettingsInfo.style.width = '100%';
+menuSettingsInfo.style.height = '85px';
+
 let GAME_SETTINGS = generateGameSettings();
 
 let isGamePaused = false;
@@ -166,6 +171,7 @@ try {
     function resetGameStats() {
         GAME_SETTINGS = generateGameSettings();
         console.log('-----NGS-----', GAME_SETTINGS)
+        menuSettingsInfo.textContent = JSON.stringify(GAME_SETTINGS)
         gameStats = {
             score: 0,
             bombHits: 0,
@@ -197,45 +203,45 @@ try {
     function continuousPlayButtonCheck() {
         checkAndClickPlayButton();
         setTimeout(continuousPlayButtonCheck, 1000);
-    }
+    }   
 
-let timerExists = false;
+    let timerExists = false;
 
-function setupObserver() {
-    const appBody = document.querySelector('body');
-    if (!appBody) return;
+    function setupObserver() {
+        const appBody = document.querySelector('body');
+        if (!appBody) return;
 
-    const observer = new MutationObserver((mutationsList) => {
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-                const timerElement = appBody.querySelector('.timer');
-                if (timerElement) {
-                    timerExists = true;
+        const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    const timerElement = appBody.querySelector('.timer');
+                    if (timerElement) {
+                        timerExists = true;
+                    }
                 }
             }
-        }
 
-        const currentTimer = appBody.querySelector('.timer');
-        if (!currentTimer && timerExists) {
-            if (!isChecking) {
-                isChecking = true;
-                checkGameCompletion();
-                isChecking = false;
+            const currentTimer = appBody.querySelector('.timer');
+            if (!currentTimer && timerExists) {
+                if (!isChecking) {
+                    isChecking = true;
+                    checkGameCompletion();
+                    isChecking = false;
+                }
+                timerExists = false;
+                console.log('timerExists сбрасываем флаг после исчезновения таймера')
             }
-            timerExists = false;
-            console.log('timerExists сбрасываем флаг после исчезновения таймера')
-        }
-    });
+        });
 
-    observer.observe(appBody, { childList: true, subtree: true });
-
-    const restartObserver = () => {
-        observer.disconnect();
         observer.observe(appBody, { childList: true, subtree: true });
-    };
 
-    appBody.addEventListener('gameFinished', restartObserver);
-}
+        const restartObserver = () => {
+            observer.disconnect();
+            observer.observe(appBody, { childList: true, subtree: true });
+        };
+
+        appBody.addEventListener('gameFinished', restartObserver);
+    }
 
     setupObserver();
 
@@ -258,6 +264,8 @@ function setupObserver() {
 
     menuTitle.appendChild(closeButton);
     settingsMenu.appendChild(menuTitle);
+
+    settingsMenu.appendChild(menuSettingsInfo);
 
     function updateSettingsMenu() {
         document.getElementById('flowerSkipPercentage').value = GAME_SETTINGS.flowerSkipPercentage;

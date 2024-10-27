@@ -141,6 +141,7 @@ try {
 	}
 
 	function resetGameStats() {
+		GAME_SETTINGS.flowerSkipPercentage = Math.floor(Math.random() * 11) + 15;
 		gameStats = {
 			score: 0,
 			bombHits: 0,
@@ -540,8 +541,8 @@ try {
 		}
 	}
 
-	loadSettings();
-	updateSettingsMenu();
+	// loadSettings();
+	// updateSettingsMenu();
 
 	function toggleGamePause() {
 		isGamePaused = !isGamePaused;

@@ -21,10 +21,6 @@ let GAME_SETTINGS = {
 	dogsProbability: (98 + Math.random()) / 100
 };
 
-console.log('---1----')
-console.log(GAME_SETTINGS)
-
-
 let isGamePaused = false;
 
 try {
@@ -46,11 +42,9 @@ try {
 	function handleGameElement(item) {
 		if (!item || !item.asset) return;
 
-
-		console.log('---handleGameElement----')
-		console.log(GAME_SETTINGS)
-		console.log(gameStats)
-		 
+		// console.log('---handleGameElement----')
+		// console.log(GAME_SETTINGS)
+		// console.log(gameStats)
 		
 		const {
 			assetType
@@ -135,7 +129,6 @@ try {
 	}
 
 	function checkGameCompletion() {
-		console.log('-----checkGameCompletion-------')
 		const rewardElement = document.querySelector('#app > div > div > div.content div.reward');
 		if (rewardElement && !gameStats.isGameOver) {
 			gameStats.isGameOver = true;
@@ -144,8 +137,8 @@ try {
 	}
 
 	function resetGameStats() {
-		console.log('-----resetGameStats-------')
 		GAME_SETTINGS.flowerSkipPercentage = Math.floor(Math.random() * 11) + 15;
+		console.log('-----flowerSkipPercentage-------' + GAME_SETTINGS.flowerSkipPercentage)
 		gameStats = {
 			score: 0,
 			bombHits: 0,
@@ -180,10 +173,8 @@ try {
 	}
 
 	const observer = new MutationObserver(mutations => {
-		console.log('---------------------------MutationObserver')
 		for (const mutation of mutations) {
 			if (mutation.type === 'childList') {
-				console.log('-----MutationObserver-------')
 				checkGameCompletion();
 			}
 		}
@@ -193,11 +184,7 @@ try {
 		window.addEventListener('load', () => {
 		setTimeout(() => {
 		    appElement = document.querySelector('#app');
-		    console.log(appElement);
-		
-		
 		    if (appElement) {
-			console.log('-------------------------------observer start');
 			observer.observe(appElement, {
 			    childList: true,
 			    subtree: true

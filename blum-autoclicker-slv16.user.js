@@ -43,8 +43,8 @@ try {
 		if (!item || !item.asset) return;
 
 		// console.log('---handleGameElement----')
-		// console.log(GAME_SETTINGS)
-		// console.log(gameStats)
+		console.log(GAME_SETTINGS)
+		console.log(gameStats)
 		
 		const {
 			assetType

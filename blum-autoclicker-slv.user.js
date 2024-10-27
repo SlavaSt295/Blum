@@ -13,8 +13,8 @@
 
 let GAME_SETTINGS = {
 	minBombHits: Math.floor(Math.random() * 2),
-	minIceHits: Math.floor(Math.random() * 2) + 1,
-	flowerSkipPercentage: Math.floor(Math.random() * 11) + 14,
+	minIceHits: Math.floor(Math.random() * 2) + 2,
+	flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
 	minDelayMs: 500,
 	maxDelayMs: 999,
 	autoClickPlay: false,
@@ -22,13 +22,9 @@ let GAME_SETTINGS = {
 };
 
 
-
-let GAME_SETTINGS_ORIGINAL = Object.assign({}, GAME_SETTINGS);
-
 let isGamePaused = false;
 
 try {
-	
 	let gameStats = {
 		score: 0,
 		bombHits: 0,
@@ -47,10 +43,14 @@ try {
 	function handleGameElement(item) {
 		if (!item || !item.asset) return;
 
+		
+		console.log('------------------------')
+		console.log(GAME_SETTINGS)
+		console.log('------------------------')
+		
 		const {
 			assetType
 		} = item.asset;
-		
 		switch (assetType) {
 			case "CLOVER":
 				processFlower(item);
@@ -133,10 +133,8 @@ try {
 	function checkGameCompletion() {
 		const rewardElement = document.querySelector('#app > div > div > div.content > div.reward');
 		if (rewardElement && !gameStats.isGameOver) {
-
-			console.log('-------------------------GameOver-----------------------------')
-			
 			gameStats.isGameOver = true;
+			GAME_SETTINGS.flowerSkipPercentage = Math.floor(Math.random() * 11) + 15;
 			resetGameStats();
 		}
 	}
@@ -150,15 +148,6 @@ try {
 			flowersSkipped: 0,
 			isGameOver: false,
 		};
-
-		
-		console.log('----------------------resetGameStats-------------------------------')
-		// GAME_SETTINGS = GAME_SETTINGS_ORIGINAL;
-		// let noisePercent = Math.floor(Math.random() * 15) + 14;
-		// let noiseFlowerSkip = Math.floor(GAME_SETTINGS.flowerSkipPercentage * (noisePercent / 100));
-		// GAME_SETTINGS.flowerSkipPercentage += noiseFlowerSkip;
-		console.log(GAME_SETTINGS)
-		console.log('-------------------------------------------------------------')
 	}
 
 	function getNewGameDelay() {

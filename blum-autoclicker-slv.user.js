@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      999
+// @version      1001
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -494,7 +494,7 @@ try {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: rgb(234 255 60);
+      background-color: rgb(255 0 0);
       color: #fff;
       border: none;
       border-radius: 50%;

@@ -26,6 +26,7 @@ const generateGameSettings = () => {
 
     return {
         minBombHits: Math.random() < 0.3 ? 1 : 0,
+        bombsProbability: (70 + Math.random() * 10) / 100,
         minIceHits: minIceHits,
         flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
         minDelayMs: 500,
@@ -64,9 +65,9 @@ try {
     function handleGameElement(item) {
         if (!item || !item.asset) return;
 
-        // console.log('---handleGameElement----')
-        // console.log(GAME_SETTINGS)
-        // console.log(gameStats)
+        console.log('---handleGameElement----')
+        console.log(GAME_SETTINGS)
+        console.log(gameStats)
 
         const {
             assetType
@@ -97,13 +98,22 @@ try {
         }
     }
 
+
+    //function processBomb(item) {
+    //    if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
+    //        gameStats.score = 0;
+    //        clickElement(item);
+    //        gameStats.bombHits++;
+    //    }
+    //}
+
     function processBomb(item) {
-        if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
-            gameStats.score = 0;
+        if (Math.random() < GAME_SETTINGS.bombsProbability) {
             clickElement(item);
             gameStats.bombHits++;
         }
     }
+
 
     function processIce(item) {
         if (gameStats.iceHits < GAME_SETTINGS.minIceHits) {
@@ -203,7 +213,7 @@ try {
     function continuousPlayButtonCheck() {
         checkAndClickPlayButton();
         setTimeout(continuousPlayButtonCheck, 1000);
-    }   
+    }
 
     let timerExists = false;
 
@@ -484,7 +494,7 @@ try {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: rgba(36, 146, 255, 0.8);
+      background-color: rgb(234 255 60);
       color: #fff;
       border: none;
       border-radius: 50%;

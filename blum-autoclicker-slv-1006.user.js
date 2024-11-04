@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1005
+// @version      1006
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
 // @grant        none
 // @icon         https://cdn.prod.website-files.com/65b6a1a4a0e2af577bccce96/65ba99c1616e21b24009b86c_blum-256.png
-// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1005.user.js
-// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1005.user.js
+// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1006.user.js
+// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1006.user.js
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
@@ -520,7 +520,7 @@ try {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: rgb(0 255 196);
+      background-color: rgb(255 69 241);
       color: #fff;
       border: none;
       border-radius: 50%;

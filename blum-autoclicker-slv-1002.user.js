@@ -26,7 +26,8 @@ const generateGameSettings = () => {
 
     return {
         minBombHits: Math.random() < 0.3 ? 1 : 0,
-        bombsProbability: (70 + Math.random() * 10) / 100,
+        bombsProbability: 0,
+        // bombsProbability: (70 + Math.random() * 10) / 100,
         minIceHits: minIceHits,
         flowerSkipPercentage: Math.floor(Math.random() * 11) + 15,
         minDelayMs: 500,

@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1004
+// @version      1005
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
 // @grant        none
 // @icon         https://cdn.prod.website-files.com/65b6a1a4a0e2af577bccce96/65ba99c1616e21b24009b86c_blum-256.png
-// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1004.user.js
-// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1004.user.js
+// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1005.user.js
+// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1005.user.js
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
@@ -33,7 +33,9 @@ const generateGameSettings = () => {
         minDelayMs: 500,
         maxDelayMs: 999,
         autoClickPlay: false,
-        dogsProbability: (98 + Math.random()) / 100
+        dogsProbability: (98 + Math.random()) / 100,
+        trumpProbability: (98 + Math.random()) / 100,
+        harrisProbability: (98 + Math.random()) / 100
     }
 }
 
@@ -53,6 +55,8 @@ try {
         bombHits: 0,
         iceHits: 0,
         dogsHits: 0,
+        trumpHits: 0,
+		harrisHits: 0,
         flowersSkipped: 0,
         isGameOver: false,
     };
@@ -86,6 +90,12 @@ try {
             case "DOGS":
                 processDogs(item);
                 break;
+			case "TRUMP":
+				processTrump(item);
+				break;
+			case "HARRIS":
+				processHarris(item);
+				break;
         }
     }
 
@@ -130,7 +140,22 @@ try {
         }
     }
 
+    function processTrump(item) {
+		if (Math.random() < GAME_SETTINGS.trumpProbability) {
+			clickElement(item);
+			gameStats.trumpHits++;
+		}
+	}
+	function processHarris(item) {
+		if (Math.random() < GAME_SETTINGS.harrisProbability) {
+			clickElement(item);
+			gameStats.harrisHits++;
+		}
+	}
+
     function clickElement(item) {
+        if (isGamePaused) return;
+        
         const createEvent = (type, EventClass) => new EventClass(type, {
             bubbles: true,
             cancelable: true,

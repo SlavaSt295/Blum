@@ -6,8 +6,8 @@
 // @match        https://telegram.blum.codes/*
 // @grant        none
 // @icon         https://cdn.prod.website-files.com/65b6a1a4a0e2af577bccce96/65ba99c1616e21b24009b86c_blum-256.png
-// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1001.user.js
-// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1001.user.js
+// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1002.user.js
+// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1002.user.js
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
@@ -99,20 +99,20 @@ try {
     }
 
 
-    //function processBomb(item) {
-    //    if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
-    //        gameStats.score = 0;
-    //        clickElement(item);
-    //        gameStats.bombHits++;
-    //    }
-    //}
-
     function processBomb(item) {
-        if (Math.random() < GAME_SETTINGS.bombsProbability) {
+        if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
+            gameStats.score = 0;
             clickElement(item);
             gameStats.bombHits++;
         }
     }
+
+    // function processBomb(item) {
+    //     if (Math.random() < GAME_SETTINGS.bombsProbability) {
+    //         clickElement(item);
+    //         gameStats.bombHits++;
+    //     }
+    // }
 
 
     function processIce(item) {

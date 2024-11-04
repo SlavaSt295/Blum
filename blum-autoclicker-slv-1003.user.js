@@ -495,7 +495,7 @@ try {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: rgb(255 0 0);
+      background-color: rgb(0 255 196);
       color: #fff;
       border: none;
       border-radius: 50%;

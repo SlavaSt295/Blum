@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1006
+// @version      1007
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
 // @grant        none
 // @icon         https://cdn.prod.website-files.com/65b6a1a4a0e2af577bccce96/65ba99c1616e21b24009b86c_blum-256.png
-// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1006.user.js
-// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1006.user.js
+// @downloadURL  https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1007.user.js
+// @updateURL    https://github.com/SlavaSt295/Blum/blob/main/blum-autoclicker-slv-1007.user.js
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
@@ -34,8 +34,8 @@ const generateGameSettings = () => {
         maxDelayMs: 999,
         autoClickPlay: false,
         dogsProbability: (98 + Math.random()) / 100,
-        trumpProbability: (98 + Math.random()) / 100,
-        harrisProbability: (98 + Math.random()) / 100
+        trumpProbability: (90 + Math.random()) / 100,
+        harrisProbability: (90 + Math.random()) / 100
     }
 }
 
